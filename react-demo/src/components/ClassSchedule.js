@@ -88,9 +88,9 @@ const ClassSchedule = () => {
     { title: "Ngày kết thúc đăng ký", dataIndex: "registrationEnd", key: "registrationEnd" },
     { title: "Ngày bắt đầu học", dataIndex: "courseStart", key: "courseStart" },
     { title: "Ngày kết thúc học", dataIndex: "courseEnd", key: "courseEnd" },
-    { 
-      title: "Trạng thái", 
-      dataIndex: "status", 
+    {
+      title: "Trạng thái",
+      dataIndex: "status",
       key: "status",
       render: (status) => {
         const color = status === "ACTIVE" ? "green" : status === "COMPLETED" ? "blue" : "red";
@@ -112,15 +112,15 @@ const ClassSchedule = () => {
   return (
     <div>
       <h2>Quản lý Lịch Học</h2>
-      
+
       <Button type="primary" icon={<PlusOutlined />} onClick={() => showModal()}>Thêm Lịch</Button>
-      
-      <Table 
-        columns={columns} 
-        dataSource={schedules} 
-        rowKey="id" 
-        bordered 
-        style={{ marginTop: 20 }} 
+
+      <Table
+        columns={columns}
+        dataSource={schedules}
+        rowKey="id"
+        bordered
+        style={{ marginTop: 20 }}
       />
 
       <Modal
@@ -130,9 +130,14 @@ const ClassSchedule = () => {
         footer={null}
       >
         <Form form={form} layout="vertical" onFinish={handleSubmit}>
-          <Form.Item name="classEntity.id" label="ID Lớp học" rules={[{ required: true, message: "Vui lòng nhập ID lớp học!" }]}>
+          <Form.Item
+            name={["classEntity", "id"]}
+            label="ID Lớp học"
+            rules={[{ required: true, message: "Vui lòng nhập ID lớp học!" }]}
+          >
             <Input type="number" placeholder="Nhập ID lớp học" />
           </Form.Item>
+
 
           <Form.Item name="fixedStartTime" label="Giờ bắt đầu" rules={[{ required: true, message: "Vui lòng nhập giờ!" }]}>
             <TimePicker format="HH:mm" />

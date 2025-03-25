@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:9191/api/schedules";
+const API_URL = "http://localhost:8080/api/schedules";
 
 const ScheduleService = {
   getAllSchedules: () => axios.get(`${API_URL}/all`),

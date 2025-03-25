@@ -31,11 +31,11 @@ function Header() {
             <FaClock className="menu-icon" /> Class Schedule
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/schedule" className={({ isActive }) => (isActive ? "active" : "")}>
             <FaCalendarAlt className="menu-icon" /> Schedule
           </NavLink>
-        </li>
+        </li> */}
       </ul>
       </div>
     </div>

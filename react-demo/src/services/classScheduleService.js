@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:9191/api/class-schedules";
+const API_URL = "http://localhost:8080/api/class-schedules";
 
 const getAllSchedules = () => axios.get(API_URL);
 const getScheduleById = (id) => axios.get(`${API_URL}/${id}`);

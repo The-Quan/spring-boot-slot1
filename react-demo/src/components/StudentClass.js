@@ -50,20 +50,18 @@ const StudentClass = () => {
   };
 
   const handleDelete = async (studentId, classId) => {
-    Modal.confirm({
-      title: "Xác nhận",
-      content: "Bạn có chắc muốn xóa sinh viên khỏi lớp này?",
-      onOk: async () => {
-        try {
-          await StudentClassService.removeStudentFromClass(studentId, classId);
-          loadStudentClasses();
-          message.success("Xóa sinh viên khỏi lớp thành công!");
-        } catch (error) {
-          message.error("Không thể xóa sinh viên khỏi lớp!");
-        }
-      },
-    });
+    const isConfirmed = window.confirm("Bạn có chắc muốn xóa sinh viên khỏi lớp này?");
+    if (isConfirmed) {
+      try {
+        await StudentClassService.removeStudentFromClass(studentId, classId);
+        loadStudentClasses();
+        alert("Xóa sinh viên khỏi lớp thành công!");
+      } catch (error) {
+        alert("Không thể xóa sinh viên khỏi lớp!");
+      }
+    }
   };
+  
 
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },

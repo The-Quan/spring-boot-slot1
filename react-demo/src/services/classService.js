@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:9191/api/classes"; // Thay bằng URL backend của bạn
+const API_URL = "http://localhost:8080/api/classes"; // Thay bằng URL backend của bạn
 
 const classService = {
   getAllClasses: () => axios.get(API_URL),

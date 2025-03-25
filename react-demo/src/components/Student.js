@@ -51,21 +51,18 @@ const Student = () => {
   };
 
   const handleDelete = async (id) => {
-    Modal.confirm({
-      title: "Xác nhận",
-      content: "Bạn có chắc muốn xóa sinh viên này?",
-      onOk: async () => {
-        try {
-          await StudentService.remove(id);
-          message.success("Xóa sinh viên thành công!");
-          loadStudents();
-        } catch (error) {
-          message.error("Lỗi khi xóa sinh viên!");
-        }
-      },
-    });
+    const isConfirmed = window.confirm("Bạn có chắc muốn xóa sinh viên này?");
+    if (isConfirmed) {
+      try {
+        await StudentService.remove(id);
+        alert("Xóa sinh viên thành công!");
+        loadStudents(); // Cập nhật danh sách sinh viên
+      } catch (error) {
+        alert("Lỗi khi xóa sinh viên!");
+      }
+    }
   };
-
+  
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },
     { title: "Tên", dataIndex: "name", key: "name" },

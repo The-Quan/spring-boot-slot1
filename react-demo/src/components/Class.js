@@ -48,21 +48,19 @@ const Class = () => {
     form.setFieldsValue(classItem);
   };
 
-  const handleDelete = (id) => {
-    Modal.confirm({
-      title: "Xác nhận",
-      content: "Bạn có chắc chắn muốn xóa lớp học này?",
-      onOk: async () => {
-        try {
-          await classService.deleteClass(id);
-          message.success("Xóa lớp học thành công!");
-          fetchClasses();
-        } catch (error) {
-          message.error("Lỗi khi xóa lớp học!");
-        }
-      },
-    });
+  const handleDelete = async (id) => {
+    const isConfirmed = window.confirm("Bạn có chắc chắn muốn xóa lớp học này?");
+    if (isConfirmed) {
+      try {
+        await classService.deleteClass(id);
+        alert("Xóa lớp học thành công!");
+        fetchClasses();
+      } catch (error) {
+        alert("Lỗi khi xóa lớp học!");
+      }
+    }
   };
+  
 
   const columns = [
     {
